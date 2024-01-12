@@ -1,0 +1,29 @@
+.btn {
+  padding: 1rem;
+  border-radius: 20px;
+  background-color: tomato;
+  color: white;
+  font-size: 2rem;
+}
+
+input {
+  display: block;
+  width: 300px;
+  padding: .5rem;
+  margin-top: 1rem;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
