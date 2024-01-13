@@ -7,7 +7,7 @@ body {
   color: orange;
   font-weight: bold;
 }
-.container{
+/* .container{
   display: grid;
   grid-template-areas:
   "hd hd"
@@ -19,43 +19,5 @@ body {
   gap: 10px;
   font-weight: bold;
   margin: 20px;
-}
-.header-top,
-.footer,
-.section-left,
-.section-right {
-  padding: 5px;
-  background-color: lightgray;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.header-top{
-  color: black;
-  grid-area: hd;
-  border: 1px solid gray;
-}
-.header-section__right {
-height: 5vh;
-}
-.section-nav__right{
-height: 90vh;
-}
-.header-nav,
-.header-section__right,
-.section-nav__right{
-  margin: 10px;
-  padding: 10px;
-  background-color: lightblue;
-  color: blue;
-  border: 1px solid blue;
-}
-.section-left {
-  grid-area: sl;
-}
-.section-right{
-  grid-area: sr;
-}
-.footer{
-  grid-area: ft;
-}
+} */
+
