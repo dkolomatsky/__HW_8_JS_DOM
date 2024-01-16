@@ -86,6 +86,7 @@ const create = function () {
     article_2_Footer
   );
 };
+
 create();
 
 // headerTop.setAttribute("class", "header-top");
