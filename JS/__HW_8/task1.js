@@ -1,103 +1,155 @@
-// 1. Згенерувати теги теги через javascript. Додати на сторінку семантичні теги та метагеги опису сторінки.
-//  прописати стилі для для елементів використовуючи css id та класи
-// https://ru.megaindex.com/blog/files/images/semantic-markup-example.jpg
+// 1. Згенерувати теги через javascript. Додати на сторінку семантичні теги та метагеги опису сторінки. Прописати стилі для для елементів використовуючи css id та класи
+// код має зробити ось таку сторінку як на малюнкуhttps://ru.megaindex.com/blog/files/images/semantic-markup-example.jpg
 
 // При подвійному кліку на тег має з'явитись input який прийматиме текст для тега по якому натиснули та новий фоновий колір
+function createTag(
+  tagName = "div",
+  className = "",
+  text = "",
+  type = "text",
+  listener = { typeEvent: null, Fn: null }
+) {
+  const tag = document.createElement(tagName);
 
-const create = function () {
-  const body = document.querySelector("body");
-  // основные блоки контейнеры
-  const headerTop = document.createElement("header");
-  // headerTop.textContent = "HEADER";
-  const sectionLeft = document.createElement("section");
-  const sectionRight = document.createElement("section");
-  const footer = document.createElement("footer");
+  if (className !== "") {
+    tag.classList.add(className);
+  }
+  if (tagName === "input") {
+    tag.type = type;
+  } else {
+    tag.innerText = text;
+  }
+  if (listener.typeEvent !== null) {
+    tag.addEventListener(listener.typeEvent, listener.Fn);
+  }
+  return tag;
+}
 
-  // добавление в блок headerTop
-  const navHeaderTop = document.createElement("nav");
-
-  // добавление подблоков в блок sectionLeft
-  const sectionLeftHeader = document.createElement("header");
-  const article_1 = document.createElement("article");
-  const article_2 = document.createElement("article");
-  const sectionLeftFooter = document.createElement("footer");
-
-  // добавление подблоков в блок sectionRight
-  const sectionRightHeader = document.createElement("header");
-  const sectionRightNav = document.createElement("nav");
-
-  // добавление тегов в подблок article_1
-  const article_1_Header = document.createElement("header");
-  const article_1_Aside = document.createElement("aside");
-  const aricle_1_Footer = document.createElement("footer");
-  const article_1_ParagLong = document.createElement("p");
-  const article_1_ParagShort = document.createElement("p");
-
-  // добавление тегов в подблок article_2
-  const article_2_Header = document.createElement("header");
-  const article_2_parag1 = document.createElement("p");
-  const article_2_parag2 = document.createElement("p");
-  const article_2_Footer = document.createElement("footer");
-
-  // присвоение имен тегов блоков,подблоков и конечных тегов в подблоках
-  body.textContent = "BODY";
-  headerTop.textContent = "HEADER";
-  sectionLeft.textContent = "SECTION";
-  sectionRight.textContent = "SECTION";
-  footer.textContent = "FOOTER";
-  navHeaderTop.textContent = "NAV";
-  sectionLeftHeader.textContent = "HEADER";
-  article_1.textContent = "ARTICLE";
-  article_2.textContent = "ARTICLE";
-  sectionLeftFooter.textContent = "FOOTER";
-  sectionRightHeader.textContent = "HEADER";
-  sectionRightNav.textContent = "NAV";
-  article_1_Header.textContent = "HEADER";
-  article_1_Aside.textContent = "ASIDE";
-  aricle_1_Footer.textContent = "FOOTER";
-  article_1_ParagLong.textContent = "P";
-  article_1_ParagShort.textContent = "P";
-  article_2_Header.textContent = "HEADER";
-  article_2_parag1.textContent = "P";
-  article_2_parag2.textContent = "P";
-  article_2_Footer.textContent = "FOOTER";
-
-  // добавление созданых элементов друг в друга
-  body.append(headerTop, sectionLeft, sectionRight, footer);
-  headerTop.append(navHeaderTop);
-  sectionLeft.append(
-    sectionLeftHeader,
-    article_1,
-    article_2,
-    sectionLeftFooter
-  );
-  sectionRight.append(sectionRightHeader, sectionRightNav);
-  article_1.append(
-    article_1_Header,
-    article_1_ParagLong,
-    article_1_ParagShort,
-    article_1_Aside,
-    aricle_1_Footer
-  );
-  article_2.append(
-    article_2_Header,
-    article_2_parag1,
-    article_2_parag2,
-    article_2_Footer
-  );
-};
-
-create();
-
-// headerTop.setAttribute("class", "header-top");
-// headerSectionRight.setAttribute("class", "header-section__right");
-// headerArticle1.setAttribute("class", "header-section__left--article1");
-// headerArticle1.setAttribute("class", "header-section__left--article2");
-
-// nav.setAttribute("class", "header-nav");
-// navSectionRight.setAttribute("class", "section-nav__right");
-
-// sectionLeft.setAttribute("class", "section-left");
-// sectionRight.setAttribute("class", "section-right");
-
-// footer.setAttribute("class", "footer");
+function clearChanges() {
+  allClasses.forEach((elem) => {
+    elem.style.color = "";
+    elem.style.backgroundColor = "";
+    if (input) {
+      input.className = "hide";
+    }
+    input.className = "input";
+  });
+}
+function changeElement(e) {
+  clearChanges();
+  input.value = this.tagName;
+  this.append(input);
+  this.style.backgroundColor = "tomato";
+  this.style.color = "white";
+  e.stopPropagation();
+}
+const input = createTag("input");
+const body = document.querySelector("body");
+const container = createTag("div", "container");
+const span = createTag("span", "container-span", "BODY");
+// основные блоки
+const headerTop = createTag("header", "header-top", "HEADER", undefined, {
+  typeEvent: "dblclick",
+  Fn: changeElement,
+});
+const sectionLeft = createTag("section", "section-left", "SECTION");
+const sectionRight = createTag(
+  "section",
+  "section-right",
+  "SECTION",
+  undefined,
+  { typeEvent: "dblclick", Fn: changeElement }
+);
+const footer = createTag("section", "footer-bottom", "FOOTER");
+// добавление в блок headerTop
+const navHeaderTop = createTag("nav", "header-top_nav", "NAV", undefined, {
+  typeEvent: "dblclick",
+  Fn: changeElement,
+});
+// добавление подблоков в блок sectionLeft
+const sectionLeftHeader = createTag("header", "section-left__header", "HEADER");
+const article_1 = createTag("article", "section-left__article1", "ARTICLE");
+const article_2 = createTag("article", "section-left__article2", "ARTICLE");
+const sectionLeftFooter = createTag("footer", "section-left__footer", "FOOTER");
+// добавление подблоков в блок sectionRight
+const sectionRightHeader = createTag(
+  "header",
+  "section-right__header",
+  "HEADER",
+  undefined,
+  { typeEvent: "dblclick", Fn: changeElement }
+);
+const sectionRightNav = createTag(
+  "nav",
+  "section-right__nav",
+  "NAV",
+  undefined,
+  { typeEvent: "dblclick", Fn: changeElement }
+);
+// добавление тегов в подблок article_1
+const article_1_Header = createTag(
+  "header",
+  "section-left__article1--header",
+  "HEADER"
+);
+const article_1_Aside = createTag(
+  "aside",
+  "section-left__article1--aside",
+  "ASIDE"
+);
+const aricle_1_Footer = createTag(
+  "footer",
+  "section-left__article1--footer",
+  "FOOTER"
+);
+const article_1_ParagLong = createTag(
+  "p",
+  "section-left__article1--paragLong",
+  "P"
+);
+const article_1_ParagShort = createTag(
+  "p",
+  "section-left__article1--paragShort",
+  "P"
+);
+// добавление тегов в подблок article_2
+const article_2_Header = createTag(
+  "header",
+  "section-left__article2--header",
+  "ARTICLE"
+);
+const article_2_parag1 = createTag("p", "section-left__article2--parag1", "P");
+const article_2_parag2 = createTag("p", "section-left__article2--parag2", "P");
+const article_2_Footer = createTag(
+  "footer",
+  "section-left__article2--footer",
+  "FOOTER"
+);
+// добавление созданых элементов друг в друга
+body.append(container);
+container.append(span, headerTop, sectionLeft, sectionRight, footer);
+headerTop.append(navHeaderTop);
+sectionLeft.append(sectionLeftHeader, article_1, article_2, sectionLeftFooter);
+sectionRight.append(sectionRightHeader, sectionRightNav);
+article_1.append(
+  article_1_Header,
+  article_1_ParagLong,
+  article_1_ParagShort,
+  article_1_Aside,
+  aricle_1_Footer
+);
+article_2.append(
+  article_2_Header,
+  article_2_parag1,
+  article_2_parag2,
+  article_2_Footer
+);
+const allClasses = [
+  sectionRight,
+  sectionRightHeader,
+  sectionRightNav,
+  input,
+  span,
+  headerTop,
+  navHeaderTop,
+];

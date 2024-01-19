@@ -3,21 +3,106 @@
 }
 body {
   margin: 0 auto;
+}
+.hide {
+  display: none;
+}
+.input{
   text-align: center;
-  color: orange;
+  width: 75px;
+  margin-right: 10px;
   font-weight: bold;
 }
-/* .container{
+.container {
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px 10px;
   display: grid;
   grid-template-areas:
-  "hd hd"
-  "sl sr"
-  "ft ft";
-  grid-template-rows: 1fr 8fr 1fr;
+      "sp sp"
+      "hd hd"
+      "sl sr"
+      "ft ft";
   grid-template-columns: 3fr 1fr;
-  text-align: center;
+  align-items: stretch;
   gap: 10px;
-  font-weight: bold;
-  margin: 20px;
-} */
+  text-align: center;
+}
+.header-top,
+.section-left,
+.section-right,
+.footer-bottom{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  padding: 10px;
+  background-color: rgba(242, 242, 242, 1);
+}
+.container-span {
+  grid-area: sp;
+  color: orange;
+}
+.header-top{
+  grid-area: hd;
+}
+.section-left{
+  grid-area: sl;
+}
+.section-right{
+  grid-area: sr;
+  padding: 10px;
+}
+.footer-bottom{
+  grid-area: ft;
+}
+
+.header-top_nav,
+.section-left__header,
+.section-left__article1,
+.section-left__article2,
+.section-left__footer,
+.section-right__header,
+.section-right__nav,
+.section-left__article1--header,
+.section-left__article1--aside,
+.section-left__article1--footer,
+.section-left__article1--paragLong,
+.section-left__article1--paragShort,
+.section-left__article2--header,
+.section-left__article2--parag1,
+.section-left__article2--parag2,
+.section-left__article2--footer{
+  border: 2px solid black;
+  padding: 5px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  &.header-top_nav,
+  &.section-left__article1,
+  &.section-left__article2,
+  &.section-left__header,
+  &.section-left__footer,
+  &.section-right__header,
+  &.section-right__nav {
+    background-color: rgba(216, 230, 247, 1);
+    color: rgba(30, 90, 250, 1);
+  }
+  &.section-left__article1--header,
+  .section-left__article1--aside,
+  .section-left__article1--footer,
+  .section-left__article1--paragLong,
+  .section-left__article1--paragShort,
+  .section-left__article2--header,
+  .section-left__article2--parag1,
+  .section-left__article2--parag2,
+  .section-left__article2--footer
+  {
+    background-color: rgba(216, 250, 230, 1);
+    color: rgba(65, 211, 79, 1);
+  }
+}
+
 
