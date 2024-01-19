@@ -45,14 +45,20 @@ function changeElement(e) {
 }
 const input = createTag("input");
 const body = document.querySelector("body");
-const container = createTag("div", "container");
+const container = createTag("container", "container", undefined, undefined, {
+  typeEvent: "dblclick",
+  Fn: changeElement,
+});
 const span = createTag("span", "container-span", "BODY");
 // основные блоки
 const headerTop = createTag("header", "header-top", "HEADER", undefined, {
   typeEvent: "dblclick",
   Fn: changeElement,
 });
-const sectionLeft = createTag("section", "section-left", "SECTION");
+const sectionLeft = createTag("section", "section-left", "SECTION", undefined, {
+  typeEvent: "dblclick",
+  Fn: changeElement,
+});
 const sectionRight = createTag(
   "section",
   "section-right",
@@ -60,17 +66,56 @@ const sectionRight = createTag(
   undefined,
   { typeEvent: "dblclick", Fn: changeElement }
 );
-const footer = createTag("section", "footer-bottom", "FOOTER");
+const footer = createTag("section", "footer-bottom", "FOOTER", undefined, {
+  typeEvent: "dblclick",
+  Fn: changeElement,
+});
 // добавление в блок headerTop
 const navHeaderTop = createTag("nav", "header-top_nav", "NAV", undefined, {
   typeEvent: "dblclick",
   Fn: changeElement,
 });
 // добавление подблоков в блок sectionLeft
-const sectionLeftHeader = createTag("header", "section-left__header", "HEADER");
-const article_1 = createTag("article", "section-left__article1", "ARTICLE");
-const article_2 = createTag("article", "section-left__article2", "ARTICLE");
-const sectionLeftFooter = createTag("footer", "section-left__footer", "FOOTER");
+const sectionLeftHeader = createTag(
+  "header",
+  "section-left__header",
+  "HEADER",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
+);
+const article_1 = createTag(
+  "article",
+  "section-left__article1",
+  "ARTICLE",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
+);
+const article_2 = createTag(
+  "article",
+  "section-left__article2",
+  "ARTICLE",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
+);
+const sectionLeftFooter = createTag(
+  "footer",
+  "section-left__footer",
+  "FOOTER",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
+);
 // добавление подблоков в блок sectionRight
 const sectionRightHeader = createTag(
   "header",
@@ -90,40 +135,93 @@ const sectionRightNav = createTag(
 const article_1_Header = createTag(
   "header",
   "section-left__article1--header",
-  "HEADER"
+  "HEADER",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
 );
 const article_1_Aside = createTag(
   "aside",
   "section-left__article1--aside",
-  "ASIDE"
+  "ASIDE",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
 );
 const aricle_1_Footer = createTag(
   "footer",
   "section-left__article1--footer",
-  "FOOTER"
+  "FOOTER",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
 );
 const article_1_ParagLong = createTag(
   "p",
   "section-left__article1--paragLong",
-  "P"
+  "P",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
 );
 const article_1_ParagShort = createTag(
   "p",
   "section-left__article1--paragShort",
-  "P"
+  "P",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
 );
 // добавление тегов в подблок article_2
 const article_2_Header = createTag(
   "header",
   "section-left__article2--header",
-  "ARTICLE"
+  "ARTICLE",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
 );
-const article_2_parag1 = createTag("p", "section-left__article2--parag1", "P");
-const article_2_parag2 = createTag("p", "section-left__article2--parag2", "P");
+const article_2_parag1 = createTag(
+  "p",
+  "section-left__article2--parag1",
+  "P",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
+);
+const article_2_parag2 = createTag(
+  "p",
+  "section-left__article2--parag2",
+  "P",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
+);
 const article_2_Footer = createTag(
   "footer",
   "section-left__article2--footer",
-  "FOOTER"
+  "FOOTER",
+  undefined,
+  {
+    typeEvent: "dblclick",
+    Fn: changeElement,
+  }
 );
 // добавление созданых элементов друг в друга
 body.append(container);
@@ -152,4 +250,18 @@ const allClasses = [
   span,
   headerTop,
   navHeaderTop,
+  sectionLeft,
+  sectionLeftHeader,
+  article_1,
+  article_2,
+  sectionLeftFooter,
+  article_1_Header,
+  article_1_Aside,
+  article_1_ParagLong,
+  article_1_ParagShort,
+  aricle_1_Footer,
+  article_2_Header,
+  article_2_parag1,
+  article_2_parag2,
+  article_2_Footer,
 ];
